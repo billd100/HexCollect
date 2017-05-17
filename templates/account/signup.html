@@ -1,0 +1,27 @@
+{% extends "HexCollect/__base.html" %}
+
+{% load i18n %}
+{% load extras %}
+
+{% block head_title %}{% trans "HexCollect | Signup" %}{% endblock %}
+
+{% block content %}
+	<div class="row">
+	<div style="max-width:420px; text-align:center;" class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 floating">
+		<h1 class="text-center">{% trans "Sign Up" %}</h1>
+
+		<p>{% blocktrans %}If you already have an account, <a href="{{ login_url }}">sign in</a>!{% endblocktrans %}</p>
+
+		<form class="signup form-group" id="signup_form" method="post" action="{% url 'account_signup' %}">
+		  {% csrf_token %}
+		  {% for field in form %}
+			{{ field.errors }}
+			{{ field|addcss:'form-control' }}
+		  {% endfor %}
+		  {% if redirect_field_value %}
+			  <input class="form-control" type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+		  {% endif %}
+		  <button type="submit" class="btn btn-primary" style="margin-top: 2%; width: 100px;">{% trans "Sign Up" %} &raquo;</button>
+		</form>
+	</div></div>
+{% endblock %}

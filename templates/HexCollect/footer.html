@@ -1,0 +1,42 @@
+{% block footer %}
+<div class="site_footer">
+	<nav class="">      
+		<div class="container">
+			<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+				<div class="footer_lists">
+					<ul class="footer_list">
+						<li class="footer_item">
+							<a class="" href="{% url 'hexcollect:hexcollect' %}">HexCollect</a>
+						</li>
+						<li class="footer_item">
+							<a href="{% url 'spotlight:spotlight' %}">Spotlight</a>
+						</li>
+						<li class="footer_item">
+							<a href="{% url 'experiences:experiences' %}">Experiences</a>
+						</li>
+						<li class="footer_item">
+							<a href="{% url 'hexcollect:about' %}">About</a>
+						</li>
+						<li class="footer_item">
+							<a href="{% url 'hexcollect:user_agreement' %}">User Agreement</a>
+						</li>
+					</ul>
+
+					<ul class="footer_list pull-right">
+						{% if not request.user.is_authenticated %}
+							<li class="footer_item">
+							<a href="/a/login/" name="sign_in">Sign in</a>
+							</li>
+							<li class="footer_item">	
+								<a href="/a/signup/" name="sign_up">Sign up</a>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+</div>
+{% endblock footer %}
+	
+

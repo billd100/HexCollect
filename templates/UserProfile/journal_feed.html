@@ -1,0 +1,22 @@
+{% for daily_check_in in daily_check_ins %}
+	<div class="journal_feed">
+		<p class="checkin_status">
+			{% if daily_check_in.status == 'excellent' %}
+				<span class="excellent">{{ daily_check_in.pub_date }}</span>
+			{% elif daily_check_in.status == 'good' %}
+				<span class="good">{{ daily_check_in.pub_date }}</span>
+			{% elif daily_check_in.status == 'neutral' %}
+				<span class="neutral">{{ daily_check_in.pub_date }}</span>
+			{% elif daily_check_in.status == 'poor' %}
+				<span class="poor">{{ daily_check_in.pub_date }}</span>
+			{% elif daily_check_in.status == 'abysmal' %}
+				<span class="abysmal">{{ daily_check_in.pub_date }}</span>
+			{% endif %}
+			<p>
+				{% if daily_check_in.status_detail %}
+					{{ daily_check_in.status_detail }}
+				{% endif %}
+			</p>
+		</p>
+	</div>
+{% endfor %}

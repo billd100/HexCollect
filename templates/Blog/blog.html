@@ -1,0 +1,28 @@
+{% extends "HexCollect/__base.html" %}
+
+{% load extras static %}
+
+{% block title %}Blog{% endblock title %}
+
+{% block banner %}
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="welcome-header text-center">A blog by HexCollect</h1>
+		</div>
+	</div>
+{% endblock banner %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+			{% for post in recent_posts %}
+				<div class="blog_post floating">
+					<div>
+						<h2 class="blog_post_title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2><span class="blog_post_pubdate">{{ post.pub_date|date:"N j, Y" }}</span>
+					</div>
+					{{ post.content|truncatechars:1000|safe }}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock content %}

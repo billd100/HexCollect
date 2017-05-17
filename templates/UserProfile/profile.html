@@ -1,0 +1,55 @@
+{% extends "HexCollect/__base.html" %}
+
+{% block title %}{{ user_profile.user.username }}{% endblock title %}
+
+{% block content %}
+	<div class="row">
+		{% if user_profile %}
+			<div class="col-xs-12">
+				<h1 class="hyphenate">{{ user_profile.user.username }}</h1>
+				<p><hr></p>
+			</div>
+			<div class="col-sm-3 col-xs-12">
+				<p class=""><strong>Exploring since:</strong> {{ user_profile.user.date_joined|date:'N Y' }}</p>
+				
+				{% if user_age != None %}
+					<p class=""><strong>Age: </strong>{{ user_age }}</p>
+				{% endif %}
+				
+				{% if user_profile.gender_identity %}
+					<p class=""><strong>Sex: </strong>{{ user_profile.gender_identity }}</p>
+				{% elif user_profile.sex %}
+					<p class=""><strong>Sex: </strong>{{ user_profile.sex }}</p>
+				{% endif %}
+				
+				{% if user_profile.about %}
+					<p class=""><strong>About: </strong>{{ user_profile.about }}</p>
+				{% endif %}
+
+			</div> <!-- col-md-3 -->
+			
+			<div class="col-sm-6 col-xs-12">
+				<div class="" style="padding: 0.1% 0% 0% 0%;">
+					{% include 'HexCollect/experience_feed.html' %}
+				</div>
+			</div>
+				<div class="col-sm-3">
+					<div class="profile_to_journal">
+						<h2><a href="{% url 'userprofile:journal' username=user_profile.user.username %}">Journal</a></h2>
+						{% if request.user == user_profile.user %}<a href="{% url 'userprofile:journal' username=user_profile.user.username %}"><span class="profile_update_journal">Update</span></a>{% endif %}
+					</div>
+					{% include 'UserProfile/journal_feed.html' %}
+				</div>
+		
+		{% else %}
+			<div class="elementCenter well">
+				<p class="text-center">Oops, it appears that {{ url_user }} is not a registered username. 
+				{% if not request.user.is_authenticated %}
+					Would you like to <a href="{% url 'account_signup' %}">register it</a>? 
+				{% endif %}
+				</p>
+			</div>	
+		{% endif %}
+	</div> <!-- row -->
+
+{% endblock content %}

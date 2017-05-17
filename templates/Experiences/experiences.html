@@ -1,0 +1,55 @@
+{% extends "HexCollect/__base.html" %}
+
+{% load extras %}
+{% load static %}
+
+{% block title %}Experiences{% endblock title %}
+    		
+{% block banner %}
+	<div class="jumbotron">
+		<div class="container">
+			<h3 style="margin: 2% 0%;" class="text-center">Have you dealt with any health problems lately? Are you doing anything about them? You can share your interventions here. If you're not sure where to start, you can look below to see what others are doing.</h3>
+			
+			<h1 class="welcome-header">
+				HexCollect Experiences 
+				<a class="share-experience btn btn-md btn-warning" href="{% url 'experiences:share_experience' %}" role="button">Share an Experience</a>
+			</h1>
+
+			<p>When you share what has worked for you, you inspire others to find what works for them. Start a conversation by sharing an experience and encourage others to share what is (or isn't) working for them. Discussions are the beginning of a healthier you.</p>
+
+		</div>
+	</div>
+{% endblock banner %}
+
+
+{% block content %}
+<div class="row">
+	<div style="margin-bottom: 3%;" class="experience-search col-xs-6 col-xs-offset-3">
+		<form role="form" class="form-horizontal" action="{% url 'experiences:experience_search' %}" method="GET">
+			{% csrf_token %}
+			<div class="form-group">
+				<div class="input-group">
+					{{ experience_search.search_terms|addcss:'form-control' }}
+					<span class="input-group-addon">
+						<input class="" type="submit" name="search_experiences" value="Search"/>
+					</span>
+				</div>
+			</div>
+		</form>		
+	</div>
+
+	<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+		{% include 'HexCollect/experience_feed.html' %}
+		
+		<button type="button" class="btn btn-default center-block view_more">
+			<a href="{% url 'experiences:activity' %}">View More Experiences</a>
+		</button>
+	</div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+	<script type="text/javascript" src="{% static 'HexCollect/js/custom/experience_feed.js' %}">
+{% endblock scripts %}
+	

@@ -1,0 +1,35 @@
+{% extends "HexCollect/__base.html" %}
+
+{% load extras static %}
+
+{% block title %}Edit Experience{% endblock title %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
+			<div class="">
+				<h2>Update</h2>
+				<form role="form" class="form-group" action="{% url 'experiences:update_experience' id=experience.id %}" method="POST">
+					{% csrf_token %}
+					<div class="exp-form">
+						<div class="experience-update floating padding">
+							{{ experience_update_form.update.errors }}
+							<!-- {{ experience_update_form.update.label_tag }} -->
+							{{ experience_update_form.update|addcss:'form-control' }}
+						</div>
+						<input class="button center-block btn" name="experience_form" type="submit" value="Publish Update" />
+					</div>
+				</form>
+				<h2>Edit</h2>
+				<form id="experience_form" role="form" class="form-group" action="{% url 'experiences:edit_experience' id=experience.id %}" method="POST">
+					{% include 'HexCollect/experience_form.html' %}
+					<input class="exp_submit center-block btn" name="experience_form" type="submit" value="Save" />
+				</form>
+			</div>
+		</div> <!-- main col -->
+	</div> <!-- row -->
+{% endblock content %}
+
+{% block scripts %}
+	<script type="text/javascript" src="{% static 'HexCollect/js/custom/add_experience.js' %}"></script>
+{% endblock scripts %}

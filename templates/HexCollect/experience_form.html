@@ -1,0 +1,119 @@
+{% load extras %}
+
+{% csrf_token %}
+
+<div class="exp-form">
+	<div class="experience-intervention floating padding">
+		<div class="intervention-help-text pull-right glyphicon glyphicon-question-sign">
+			<ul>
+				<li>An intervention name can be anything from <strong>jogging</strong> to <strong>bypass surgery</strong> to <strong>vitamin-D</strong>.</li>
+				<li>Dosage information is helpful for self-tracking as well as helping others if they wish to try a similar intervention.</li>
+				<li>Quality often varies by manufacturer so providing brand names can be important, if applicable.</li>
+			</ul>
+		</div>
+		<div>
+			{{ experience_form.intervention.label_tag }}
+			{{ experience_form.intervention.errors }}
+			{{ experience_form.intervention|addcss:'form-control' }}
+		</div>
+		<div>
+			{{ experience_form.brand.label_tag }}
+			{{ experience_form.brand.errors }}
+			{{ experience_form.brand|addcss:'form-control' }}
+		</div>
+
+		<div id="dose_fields">
+				{{ dose_form.id }}
+				<div class="cluster">
+					<span class="cluster-addon">Quantity</span>
+					{{ dose_form.dose_value.errors }}
+					<span class="cluster-addon__input">{{ dose_form.dose_value|addcss:'form-control' }}</span>
+					<span class="cluster-addon__select">
+						{{ dose_form.dose_unit }}
+					</span>
+				</div>
+			
+				<div class="cluster">
+					<span class="cluster-addon">Frequency</span>
+					{{ dose_form.dose_frequency.errors }}
+					<span class="cluster-addon__input">{{ dose_form.dose_frequency|addcss:'form-control' }}</span>
+					<span class="cluster-addon__select">
+						{{ dose_form.dose_frequency_unit }}
+					</span>
+				</div>
+
+				<div class="cluster">
+					<span class="cluster-addon">Duration</span>
+					{{ dose_form.dose_duration.errors }}
+					<span class="cluster-addon__input">{{ dose_form.dose_duration|addcss:'form-control' }}</span>
+					<span class="cluster-addon__select">
+						{{ dose_form.dose_duration_unit }}
+					</span>
+				</div>
+		</div>
+
+		<!-- JS-enabled toggle dose information -->
+		<button id="dose_button" class="hidden add_information_button  btn btn-sm btn-default center-block" type="button"><span id="dose_button_span" class="glyphicon glyphicon-plus"></span> Intervention Information</button>
+
+	</div>
+
+	<div class="experience-purpose_symptom floating padding">
+		<div class="pull-right glyphicon glyphicon-question-sign intervention-help-text">
+			<ul>
+				<li>The purpose of an intervention is a succinct name of the situation you were attempting to improve. For instance, you might start jogging for <strong>general well-being</strong> or <strong>weight-loss</strong>. Similarly, you could take iodine for a <strong>gioter</strong> or undergo cardiac bypass surgery for <strong>coronary disease</strong>.</li>
+				<li>For symptoms, indicate any that seem relevant. You can rate (1 to 100) the severity of each symptom and the improvement from the intervention.</li>
+			</ul>
+		</div>
+		<div>
+			{{ experience_form.purpose.label_tag }}
+			{{ experience_form.purpose.errors }}
+			{{ experience_form.purpose|addcss:'form-control' }}
+		</div>
+		<div class="symptom_cluster">
+			{{ symptom_formset.management_form }}
+			<div id="experience_symptoms">
+				{% for form in symptom_formset %}
+					<div class="symptom cluster">
+						{{ form.id }}
+						{{ form.symptom_severity.errors }}
+						{{ form.symptom_name.errors }}
+						{{ form.symptom_improvement.errors }}
+						
+						<span class="symptom_name">{{ form.symptom_name|addcss:'form-control' }}</span>
+						<div class="symptom_details">
+							<span class="cluster-addon">Severity before {{ form.pre_intervention }}</span>
+							<span class="cluster-addon">after {{ form.post_intervention }}</span>
+						</div>
+						
+						{% if symptom_formset.can_delete %}
+							{{ form.DELETE }}
+						{% endif %}
+
+						<button style="background-color: #fff; border: none;" class="delete_symptom" type="button"><span class="symptom_span glyphicon glyphicon-remove"></span></button>
+					</div>
+				{% endfor %}
+
+				<button class="add_symptom btn btn-sm btn-default center-block" type="button"><span class="symptom_span glyphicon glyphicon-plus"></span> Symptom</button>
+
+			</div> <!-- experience-symptoms -->
+		</div>
+	</div>
+	<div class="experience-details floating padding">
+		<div class="pull-right glyphicon glyphicon-question-sign intervention-help-text">
+			<ul>
+				<li>Descriptions should expand on the circumstances behind the experience. This could be details on how and when a supplement or prescription was taken, the recovery time post-surgery, how much weight was lost following a diet or execise.</li>
+				<li>To be as rigorous as possible, it's encouraged to share any confounding effects that could've impacted the change in symptoms and your condition overall.</li>
+			</ul>
+		</div>
+		<div>
+			{{ experience_form.details.label_tag }}
+			{{ experience_form.details.errors }}
+			{{ experience_form.details|addcss:'form-control' }}
+		</div>
+		<div>
+			{{ experience_form.effectiveness.label_tag }}
+			{{ experience_form.effectiveness.errors }}
+			{{ experience_form.effectiveness|addcss:'form-control' }}
+		</div>
+	</div>
+</div> <!-- exp-form -->

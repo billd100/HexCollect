@@ -1,0 +1,34 @@
+{% extends "HexCollect/__base.html" %}
+
+<!-- add title logic for username that dne -->
+{% block title %}A journal by {{ user_profile.user.username }}{% endblock title %}
+{% block banner %}
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1 class="welcome-header">A journal by <a href="{% url 'userprofile:profile' user_name=user_profile.user.username %}">{{ user_profile.user.username }}</a></h1>
+			{% if request.user == user_profile.user %}
+			<p>Your journal is a place to keep track of how you're doing on a day-to-day basis. You can simply designate one of the five states or you can choose to elaborate in the textbox beneath. The objective behind keeping a health journal is that by recording the minutiae, you take the first step towards making associations between the things you do and the way you feel.</p>
+			{% endif %}
+		</div>
+	</div>
+{% endblock banner %}
+
+{% block content %}
+	{% if user_profile.user == request.user %}
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1">
+				<h2 class="">Add an entry<span style="color:#aaa;"> - How're you doing?</span></h2>
+					<form action="{% url 'userprofile:journal' username=request.user.username %}" method="POST" role="form">
+						{% include 'UserProfile/daily_check_in.html' %}
+					</form>
+			</div>
+		</div> <!-- row -->
+	{% endif %}
+	
+	<div class="row">
+		<div id="check-ins" class="journal_feed col-xs-10 col-xs-offset-1">
+			{% include 'UserProfile/journal_feed.html' %}
+		</div>
+	</div>
+
+{% endblock content %}

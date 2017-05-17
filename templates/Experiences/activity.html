@@ -1,0 +1,50 @@
+{% extends "HexCollect/__base.html" %}
+
+{% load comments extras %}
+
+{% block title %}Activity{% endblock title %}
+
+{% block banner %}
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="main_site_head">What's the community exploring?</h1>
+			<h4 class="text-center">Recent Experiences on HexCollect</h4>
+		</div>
+	</div>
+{% endblock banner %}
+
+{% block content %}
+	<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+
+		<nav class="text-center" aria-label="Page navigation for recent experiences">
+			<ul class="pagination">
+				{% if experiences.has_previous %}
+					<li><a href="{% url 'experiences:activity_page' page=experiences.previous_page_number %}" aria-label="Next page"><span aria-hidden="true">&laquo;</span></a></li>
+				{% else %}
+					<li class="disabled"><span aria-hidden="true">&laquo;</span></li>
+				{% endif %}
+
+				{% for page in experiences.paginator.page_range %}
+					{% if page == experiences.number %}
+						<li class="active"><a href="{% url 'experiences:activity_page' page=page %}">{{ page }}</a></li>
+					{% else %}
+						<li><a href="{% url 'experiences:activity_page' page=page %}">{{ page }}</a></li>
+					{% endif %}
+				{% endfor %}
+				
+				{% if experiences.has_next %}
+					<li><a href="{% url 'experiences:activity_page' page=experiences.next_page_number %}" aria-label="Next page"><span aria-hidden="true">&raquo;</span></a></li>
+				{% else %}
+					<li class="disabled"><span aria-hidden="true">&raquo;</span></li>
+				{% endif %}
+			</ul>
+		</nav>
+
+		{% include 'HexCollect/experience_feed.html' %}
+
+		<div class="text-center">
+			<a class="share-experience btn btn-md btn-warning" href="{% url 'experiences:share_experience' %}" role="button">Share an Experience</a>
+		</div>
+
+	</div>
+{% endblock content %}

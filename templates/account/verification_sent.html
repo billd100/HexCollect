@@ -1,0 +1,17 @@
+{% extends "HexCollect/__base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Verify Your E-mail" %}{% endblock %}
+
+{% block content %}
+    <h4>You're almost there!</h4>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+		<h1>{% trans "Verify your E-mail address" %}</h1>
+
+		<p>{% blocktrans %}We sent you an e-mail for verification! Follow the link in the email to finalize the signup process and to officially become a member of the community. Please contact us if you do not receive an email within a few minutes.{% endblocktrans %}</p>
+
+		<p class="subtext"><strong>Why do we require E-mail verification?</strong> As a site reliant on user contributions, we have to take measures to reduce spam. Requiring new users to verify their E-mail address reduces spam substantially. We wish that things were different and we hope this is not overly inconvenient.</p>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'HexCollect/__base.html' %}
+{% block title %}About{% endblock title %}
+{% block banner %}
+    <div class="jumbotron">
+      <div class="container">
+      	<h2 class="text-center">HexCollect is empowerment in health</h2>
+        <h3 class="text-center">HexCollect's mission is to help people improve their health by facilitating and structuring the exchange of health experiences. <strong>Together we can be unbiased</strong>.</h3>
+      </div>
+    </div>
+{% endblock banner %}
+{% block content %}
+	<div class="row">
+		<div class="col-xs-12">
+			<p>For now, <a href="{% url 'experiences:experiences' %}">experiences</a> is the sole focus of HexCollect. HexCollect experiences is a solution-centric way to share your health experiences. Few of us are in perfect health and those of us that are, still look for ways to improve our health. When you take a step to improve your health, whether effective or not, you can share it on HexCollect. You go to <a href="{% url 'experiences:share_experience' %}">share an experience</a> and start with your intervention (or remedy), move on to your purpose (or your reason for attempting the intervention) and end with details of the experience and a rating of the interventions effectiveness. There are details associated with each of the focal points but the essence of an experience is the intervention, purpose, and effectiveness. You can read more about the rationale behind using these terms in <a href="{% url 'blog:blog_post' slug='welcome-to-hexcollect' %}">this post</a> on the HexCollect blog.</p>
+			
+			<p>Each experience has an updates and comments section. Updates appear if the original poster adds an update which can be done by going to the detail page of the experience and clicking the link around the experience title. Comments can be added directly from the details page.</p>
+			
+			<p>What ever your reasons for being here, we hope that you find value in the experiences of others and contribute your own experiences. Together we can get closer to objectivity than we ever could acting alone.</p>
+		</div>
+	</div>
+    <div class="row">
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="col-md-6">
+          <h4><a href="{% url 'spotlight:spotlight' %}">Spotlight</a></h4>
+          <p>Spotlight is in the conception phase. The natural progression from sharing experiences is to next undertake interventions collectively.</p>
+        
+      </div>
+      <div class="col-md-6">
+          <h4><a href="{% url 'experiences:experiences' %}">Experiences</a></h4>
+          <p>HexCollect experiences is home to the collective wisdom of the community. As humans we each have a depth of experiences that when pooled with the experiences of others can come to have meaning. Have you 
+          taken a supplement, been prescribed a pharmaceutical, or participated in a program
+          and want to share the experience? This is the place.</p>
+      </div>
+    </div> <!-- /row -->
+{% endblock content %}

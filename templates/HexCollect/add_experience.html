@@ -1,0 +1,93 @@
+<noscript>
+	{% if type_form %}
+	<form id="experience_type" role="form" class="form-horizontal" action="{% url 'experiences:add_experience' %}" method="GET">
+		<div class="form-group">
+			{{ type_form.exp_type.label_tag }}
+			{{ type_form.exp_type|addcss:'form-control' }}
+		</div>
+		<input class="btn btn-primary" type="submit" value="Next" name="specify_experience"/>
+	</form>
+	{% endif %}
+	{% if form %}
+		<form role="form" class="form-horizontal" action="{% url 'experiences:add_experience' %}" method="POST">
+			{% csrf_token %}
+		
+			{% for field in form %}
+				<div class="form-group">
+					{{ field.errors }}
+					{{ field.label_tag }}
+					{{ field|addcss:'form-control' }}
+				</div>
+			{% endfor %}
+			<input class="btn btn-primary" type="submit" value="Submit" name="experience"/>
+		</form>
+	{% endif %}
+</noscript>
+
+<form id="experience_form" role="form" class="form-group" action="{% url 'experiences:add_experience' %}" method="POST">
+	{% csrf_token %}
+	
+	<div class="exp-form">
+		{{ experience.form.intervention.errors }}
+		{{ experience_form.intervention.label_tag }}
+		{{ experience_form.intervention|addcss:'form-control' }}
+		
+		{{ experience.form.brand.errors }}
+		{{ experience_form.brand.label_tag }}
+		{{ experience_form.brand|addcss:'form-control' }}
+		
+		
+		<div class="input-group" style="width: 75%;">
+			<span class="input-group-addon">Dose:</span>
+			{{ experience.form.dose.errors }}
+			{{ experience_form.dose|addcss:'form-control' }}
+			<span class="input-group-addon" style="">
+				{{ experience_form.dose_unit }}
+			</span>
+		</div>
+		
+		<div class="input-group" style="width: 75%;">
+			<span class="input-group-addon">Taken:</span>
+			{{ experience.form.dose_frequency.errors }}
+			{{ experience_form.dose_frequency|addcss:'form-control' }}
+			<span class="input-group-addon">times per</span>
+			<span class="input-group-addon" style="">
+				{{ experience_form.dose_frequency_unit }}
+			</span>
+		</div>
+
+		<div class="input-group" style="width: 75%;">
+			<span class="input-group-addon">Taken for:</span>
+			{{ experience.form.dose_duration.errors }}
+			{{ experience_form.dose_duration|addcss:'form-control' }}
+			<span class="input-group-addon" style="">
+				{{ experience_form.dose_duration_unit }}
+			</span>
+		</div>
+		
+		{{ experience.form.purpose.errors }}
+		{{ experience_form.purpose.label_tag }}
+		{{ experience_form.purpose|addcss:'form-control' }}
+		
+		{{ experience_form.symptoms.label_tag }}
+		<div class="input-group" style="width: 75%;">
+			{{ experience.form.symptoms.errors }}
+			{{ experience_form.symptoms|addcss:'form-control' }}
+			<span class="input-group-addon">severity</span>
+			<span class="input-group-addon" style="">
+				{{ experience_form.symptom_severity }}
+			</span>
+		</div>
+		
+		{{ experience.form.description.errors }}
+		{{ experience_form.description.label_tag }}
+		{{ experience_form.description|addcss:'form-control' }}
+		
+		{{ experience.form.effectiveness.errors }}
+		{{ experience_form.effectiveness.label_tag }}
+		{{ experience_form.effectiveness|addcss:'form-control' }}
+		
+	</div> <!-- exp-form -->
+	
+	<input id="experience_form_submit" name="experience_form" type="submit" value="Submit"/>
+</form>

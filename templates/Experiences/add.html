@@ -1,0 +1,32 @@
+{% extends "HexCollect/__base.html" %}
+
+{% load extras %}
+{% load static %}
+
+{% block title %}Share Experience{% endblock title %}
+
+{% block content %}
+<div class="row">
+	{% if request.user.is_authenticated %}
+		<div class="col-xs-10 col-xs-offset-1">
+			<div class="add_exp_alert alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<p>HexCollect experiences can be confusing at first. Check out <a href="{% url 'blog:blog_post' slug='welcome-to-hexcollect' %}">this blog post</a> for an example and rationale.</p>
+			</div>
+			<form id="experience_form" role="form" class="" action="{% url 'experiences:share_experience' %}" method="POST">
+				{% include 'HexCollect/experience_form.html' %}
+				<input class="button center-block btn btn-warning" name="experience_form" type="submit" value="Publish Experience"/>
+			</form>
+		</div>
+	{% else %}
+		<div class="floating col-xs-10 col-xs-offset-1">
+			<h3 class="text-center">Please <a href="{% url 'account_login' %}?next={% firstof request.path '/' %}" name="sign_in">log in</a> or <a href="{% url 'account_signup' %}" name="sign_in">sign up</a> to start sharing your experiences!</h3>
+		</div>
+	{% endif %}
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+	<script type="text/javascript" src="{% static 'HexCollect/js/custom/add_experience.js' %}"></script>
+{% endblock scripts %}

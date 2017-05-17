@@ -1,0 +1,754 @@
+/* Main and Footer */
+.all_notfooter {
+	min-height: 100vh;
+}
+.site_footer {
+	height: min-content;
+	margin: 20vh 0 0 0;
+
+	-moz-box-shadow:    -4px -23px 12px -24px #555;
+	-webkit-box-shadow: -4px -23px 12px -24px #555;
+	box-shadow:         -4px -23px 12px -24px #555;
+}
+.footer_lists  {
+	width: 100%;	
+	padding: 10vh 0;
+}
+.footer_list {
+	list-style: none;
+	display: inline-block;
+	padding: 0;
+}
+.footer_item {
+	padding: 15% 0 0%;
+}
+.view_more {
+	margin-top: 3%;
+}
+
+.sub_header {
+	color: #bbb;
+}
+
+.sign_out {
+	padding: 4%
+}
+
+.user_agreement {
+	padding: 4% 2% 2%;
+}
+
+
+/* Blog */
+.blog_post {
+	padding: 4% 2% 2%;
+}
+.blog_post_header {
+	margin-bottom: 3%;
+}
+.blog_post_title {
+	display: inline;
+}
+.blog_post_pubdate {
+	float: right;
+}
+
+
+/* Brand / Logo */
+.logo_link:hover {
+    text-decoration: none;
+}
+.brand {
+	height: 50px;
+		margin-right: 10%;
+		width: 100%;
+}
+.logo{
+
+	height: 100%;
+	font-size: 1.5em;
+}
+.logo > div {
+	display: inline-block;
+	position: relative;
+	top: 10px;
+	margin-right: -5px;
+}
+
+.logo span {
+	opacity: 0.9;
+}
+
+@media all and (max-width:220px) {
+	.logo {
+		font-size: 1.2em;
+	}
+	.logo > div {
+		top: 13.5px;
+	}
+}
+
+.letra1 {
+   background: #30535c;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.letra2 {
+   background: #497c8b;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+.letra3 {
+   background: #61a6b9;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+.letra4 {
+   background: #6dbbd0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+.letra5 {
+   background: #7AD0E8;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ 
+}
+.letra6 {
+   background: #6dbbd0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ 
+}
+.letra7 {
+   background: #61a6b9;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+.letra8 {
+   background: #497c8b;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+}
+.letra9 {
+   background: #30535c;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+}
+.letra10 {
+   background: #30535c;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+}
+
+
+
+
+
+
+
+.subtext {
+	color: #777;
+	margin-top: 5%;
+}
+
+.hyphenate {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	-ms-word-break: break-all;
+	word-break: break-word;
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}
+
+.title_divider {
+	margin: 0% 0% 3%; 
+}
+
+.panel-title {
+	padding: 2%;
+}
+
+.elementCenter {
+	margin: auto;
+	padding: 5px 20px 5px 20px;
+}
+.sidebar {
+	background-color: #eee;
+}
+
+.left-compress {
+	width: 15%;
+	display: block;
+}
+.padding {
+	padding: 4%;
+}
+.floating {
+	<!-- horiz. offset, vertical offset, blur radius, spead radius, color -->
+	-moz-box-shadow:    -4px 23px 48px -13px #ddd;
+	-webkit-box-shadow: -4px 23px 48px -13px #ddd;
+	box-shadow:         -4px 23px 48px -13px #ddd;
+}
+
+.lagging-static {
+	margin-top: 5vh;
+}
+
+.social-feeds {
+	padding-top: 5%;
+}
+
+.social-feed {
+	margin: 0% 4%;
+}
+
+.sub-nav {
+	width: 50vw;
+	padding: 0;
+	position: relative;
+	top: -2.5vh;
+	right: -25vw;
+}
+
+.sub-nav ul {
+	position: relative;
+	right: ;
+}
+
+.help-text {
+	display: none;
+}
+
+.help-text-glyph:hover help-text {
+	display: inline;
+}
+
+.percent-effectiveness {
+	height: 15vh;
+}
+
+
+
+/* Daily Check In */ 
+
+.profile_to_journal {
+	display: inline-block;
+}
+.profile_update_journal {
+	font-size: 1em;
+}
+.journal_feed {
+	margin-top: 10%;
+}
+
+
+/* Radios */
+.radio-inline__input {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+}
+
+.radio-inline__label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-right: 6px;
+    border-radius: 3px;
+    transition: all .15s;
+}
+
+.radio-inline__input:checked + .radio-inline__label {
+    background: #B54A4A;
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0,0,0,.7);
+}
+
+.radio-inline__input:focus + .radio-inline__label {
+    outline-color: #4D90FE;
+    outline-offset: -2px;
+    outline-style: auto;
+    outline-width: 5px;
+}
+
+
+
+
+/* COMMENTS */
+.comment-divider {
+	margin: 2% 0%;
+}
+.comment_header {
+	color: #ddd;
+	display; inline;
+	pointer: ;
+}
+.comment_form textarea {
+	padding: 1%;
+	height: 10vh;
+	min-height: 35px;
+	width: 80vw; 
+	max-width: 400px;
+	margin: 0 auto;
+}
+.comment p { /* needed to center .comment p.error textarea */
+	text-align:center;
+}
+.comment_item {
+	padding: 2% 0%;
+}
+.submit_comment {
+	margin: 1% auto 5%;
+	width: 200px;
+}
+hr {
+	display: block;
+	margin: 2px auto 4px;
+	
+	height: 1.5px;
+	
+}
+.comment-user-name {
+	padding: 0.5% 1.25%;
+}
+hr.divider {
+	height: 1.5px;
+	border: 1px solid #000;
+}
+.error textarea {
+	/* horiz. offset, vertical offset, blur radius, spead radius, color */
+	-moz-box-shadow:    0px 0px 3px 1px #f99;
+	-webkit-box-shadow: 0px 0px 3px 1px #f99;
+	box-shadow:         0px 0px 3px 1px #f99;
+}
+
+/* Update Experience */
+.exp_submit {
+	margin-top: 4%;
+	width: 43%;
+	min-width: 100px;
+}
+
+
+/* Add Experiences */
+.check-in-text textarea {
+	box-shadow: 1px 1px 1px #ccc;
+}
+
+.share-experience {
+	color: #000;
+}
+/* adjust input box on daily_check_in form */
+/* \/\/\/\/\/\/\/\/\/\/\//				*/
+@media all and (max-width: 374px) {
+	.check-in-text textarea {
+		width: 100%;
+	}
+	/* 'how're you doing?' header */
+	.welcome-header {
+		font-size: 22px;
+		text-align: center;
+	}
+	.share-experience {
+		margin-top: 4%;
+		width: 80%;
+		min-width: 150px;
+	}
+	.jumbotron p {
+		font-size: 18px;
+	}
+}
+
+
+@media all and (max-width: 414px) and (min-width: 375px) {
+	.check-in-text textarea {
+		width: 100%;
+	}
+	.welcome-header {
+		font-size: 30px;
+		text-align: center;
+	}
+}
+
+
+@media all and (max-width: 768px) and (min-width: 415px) {
+	.check-in-text textarea {
+		width: 60%;
+	}
+	.share-experience {
+		width: 40%;
+	}
+	.welcome-header {
+		font-size: 34px;
+		text-align: center;
+	}
+}
+@media all and (min-width: 769px) {
+	.check-in-text textarea {
+		width: 60%;
+	}
+	.main_site_head {
+		text-align: center;
+		font-size: 38px;
+	}
+	.welcome-header {
+		font-size: 2.5em !IMPORTANT;
+		text-align: center;
+	}
+	/* "Share an Experience" Button on experiences.html */
+	.share-experience {
+		width: 60%;
+		min-width: 180px;
+		font-size: 18px;
+		margin: 6% 0%;
+	}
+}
+
+
+
+/* CLUSTER - dose, frequency, duration	*/
+.cluster-addon ~ input[type="number"] {
+	width: 55px;
+}
+
+.cluster-addon input {
+	width: 60px;
+}
+.cluster select {
+	width: min-content;
+	background-color: none;
+	border: 1px solid #ddd;
+}
+.cluster {
+	padding: 1% 0%;
+	margin: 4% 0% 0% 0%;
+	border-radius: 2px;
+	text-align: center;
+	background-color: #f9f9f9;
+}
+.cluster-addon, .cluster-addon__input {
+	vertical-align: middle;
+	display: inline-block;
+	height: intrinsic;
+}
+
+.cluster-addon {
+	padding: 2% 1%;
+}
+.cluster-addon__select > select {
+	
+	height: 27.2px;
+}
+
+/* Symptom clusters */
+.symptom_feed_name {
+	display: block;
+	font-size: 1.25em;
+}
+.symptom_cluster {
+	margin-right: 10%;
+}
+.symptom_name input {
+	width: 50%;
+	margin: 0 auto;
+}
+.symptom_details {
+	margin: 2% 0% -8% 0%;
+	background-color: #f2f2f2;
+}
+.add_symptom {
+	margin-top: 6%;
+	width: 30%;
+}
+.delete_symptom { /* button */
+	position: relative;
+	right: -57%;
+	top: -20px;
+}
+.symptom_cluster input {
+	text-align: center;
+}
+
+
+
+
+
+.errorlist {
+	list-style: none;
+	vertical-align: bottom;
+	color: red;
+}
+.errorlist ~ input, .errorlist ~ textarea {
+	-moz-box-shadow:    0px 0px 3px 1px #faa;
+	-webkit-box-shadow: 0px 0px 3px 1px #faa;
+	box-shadow:         0px 0px 3px 1px #faa;
+}
+
+
+.add_information_button {
+	margin-top: 4%;
+}
+.add_information_button span {
+	word-spacing: -0.5em;
+}
+
+.experience-intervention, .experience-purpose_symptom, .experience-details, .experience-update {
+
+}
+.experience-intervention, .experience-purpose_symptom {
+	margin-bottom: 4%;
+}
+
+
+.experience-feed-item {
+	margin-bottom: 6%;
+	padding: 0.5% 3% 3% 3%;
+}
+
+.experience-title {
+	position: relative;
+	display: inline-block;
+	width: 100%;	
+}
+.experience-title__user {
+	float: right;
+	font-size: 60%;
+	margin-top: 7px;
+	margin-left: 15px;
+}
+
+
+/* ACTIVITY FEED */
+/* display:inline in detail */
+.feed_title {
+	margin: 2% 2% 0% 2%;
+}
+.exp_feed_header {
+	display: inline;
+}
+.exp_feed_body {
+	margin: 2% 2% 1% 2%;
+	padding: 0;
+}
+.exp_feed_dose_symptoms {
+	margin: 1% 2%;
+}
+.exp_feed_comment_count {
+	margin: 1% 0%;
+	width: 10%;
+	height: 30px;
+	text-align: center;
+	
+}
+.comment_count {
+	padding: 10%;
+}
+
+
+/* Add Experience help text */
+
+.intervention-help-text ul {
+	display: none;
+}
+.intervention-help-text ul li {
+	margin-bottom: 2%;
+}
+@media all and (min-width: 1025px) {
+	.intervention-help-text:hover ul {
+		display: inline;
+		padding: 10px;
+		/* type | image | position */
+		list-style: inside circle;
+		position: absolute;
+		left: 2vw;
+		font-size: 12px;
+		width: 15vw;
+		z-index: 2;
+		word-spacing: -0.5em;
+		
+		-moz-box-shadow:    0px 0px 5px 5px #ccc;
+		-webkit-box-shadow: 0px 0px 5px 5px #ccc;
+		box-shadow:         0px 0px 5px 5px #ccc;
+	}
+}
+
+@media all and (min-width: 769px) and (max-width: 1024px) {
+	.intervention-help-text:hover ul {
+		display: inline;
+		padding: 10px;
+		list-style: inside circle;
+		position: absolute;
+		left: 20px;
+		font-size: 12px;
+		width: 14vw;
+		z-index: 2;
+		word-spacing: -0.5em;
+		
+		-moz-box-shadow:    0px 0px 5px 5px #ccc;
+		-webkit-box-shadow: 0px 0px 5px 5px #ccc;
+		box-shadow:         0px 0px 5px 5px #ccc;
+	}
+}
+
+@media all and (max-width: 768px) {
+	.intervention-help-text:hover ul {
+		display: inline;
+		padding: 10px;
+		list-style: inside circle;
+		background-color: #fff;
+		position: absolute;
+		left: -60vw;
+		bottom: 10px;
+		font-size: 14px;
+		width: 60vw;
+		z-index: 2;
+		word-spacing: -0.5em;
+		
+		-moz-box-shadow:    0px 0px 5px 5px #555;
+		-webkit-box-shadow: 0px 0px 5px 5px #555;
+		box-shadow:         0px 0px 5px 5px #555;
+	}
+}
+
+
+.post-self {
+	margin: 10% 0%;
+	padding: 0.25% 1%;
+	background-color: #eee;
+}
+
+.exp-form label {
+	margin-top: 3%;
+}
+
+
+/* Profile and Update Profile */
+.profile-sidebar p {
+	font-size: 16px;
+}
+
+
+/* description for add_experience */
+
+.button {
+	margin-top: 4%;
+	width: 43%;
+	min-width: 140px;
+}
+
+.experience-sidebar p {
+	font-size: 16px;
+}
+
+
+/* Check-In Profile Status */
+.checkin_status {
+	border-radius: 1%;
+}
+.checkin_status {
+	margin-top: 2%;
+}
+.excellent {
+	background-color: rgba(119,204,164, 0.7);
+}
+.good {
+	background-color: rgba(2,93,140, 0.2);
+}
+.neutral {
+	background-color: #FCFBE3;
+}
+.poor {
+	background-color: rgba(255,153,0, 0.5);
+}
+.abysmal {
+	background-color: rgba(255, 0, 0, 0.4);
+}
+
+
+
+
+
+/* Experience DETAIL */
+
+.exp_detail_body {
+	margin: 4% 0;
+}
+.exp_detail_body div {
+	padding-left: 0;
+	margin-bottom: 3%;
+}
+@media all and (max-width: 737px) {
+	.exp_detail_body {
+		text-align: center;
+	}
+}
+
+.gray_label {
+	color: #ccc;
+	font-size: 90%;
+}
+.exp_details {
+	padding: 0;
+}
+.exp_updates {
+	margin-top: 10%;
+}
+.exp_comment {
+	margin-top: 5%;
+}
+.experience-by {
+	font-size: 18px;
+	color: #999;
+}
+.exp_detail_head {
+
+}
+.exp_detail_h1 {
+	display: inline;
+	font-size: 32px;
+	vertical-align: -95%;
+}
+.detail_user {
+	padding: 0.5% 1.25%;
+	background-color: #eee;
+	min-width: 190px;
+	float: right;
+}
+.detail_user {
+	text-align: center;
+}
+.time_elapsed {
+	font-size: 0.7em;
+	padding-top: 5%;
+	margin: auto;
+}
+.edit_update {
+	display: inline;
+	vertical-align: -150%;
+	margin-left: 1%;
+}
+
+
+
+nav.main-nav {
+	background-color: #fff !IMPORTANT;
+	border: 1px solid white !IMPORTANT;
+	-moz-box-shadow:    -4px 23px 12px -24px #555;
+	-webkit-box-shadow: -4px 23px 12px -24px #555;
+	box-shadow:         -4px 23px 12px -24px #555;
+}
+
+.jumbotron {
+	background-color: #fff;
+	-moz-box-shadow:    -4px 23px 48px -13px #ddd;
+	-webkit-box-shadow: -4px 23px 48px -13px #ddd;
+	box-shadow:         -4px 23px 48px -13px #ddd;
+}
+.border {
+	border: 1px solid red;
+}

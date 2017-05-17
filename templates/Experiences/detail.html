@@ -1,0 +1,174 @@
+{% extends "HexCollect/__base.html" %}
+
+{% load comments extras static tz %}
+
+{% block title %}{{ experience.intervention }} for {{ experience.purpose }}{% endblock title %}
+
+{% block banner %}
+	{% if new %}
+		{{ new }}
+	{% endif %}
+{% endblock banner %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="exp_detail_head hyphenate">
+				<h1 class="exp_detail_h1">{{ experience.intervention }} for {{ experience.purpose }}</h1>
+				{% if experience.user == request.user %}
+					<div class="edit_update">
+						<a href="{% url 'experiences:edit_experience' id=experience.id %}">Edit/Update</a>
+					</div>
+				{% endif %}
+				<div class="hyphenate detail_user col-xs-4">
+					<h3>
+						<span class="experience-by">by </span><a href="{% url 'userprofile:profile' user_name=experience.user.username %}">{{ experience.user.username }}</a>
+						<p class="time_elapsed">{{ time_elapsed }}</p>
+					</h3>
+				</div>
+			</div>
+		</div> <!-- col -->
+	</div> <!-- row -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="row">
+
+			<div class="exp_detail_body col-xs-12">
+				
+				<div class="col-sm-4 col-xs-12">
+					{% if experience.symptoms.all %}
+						<div class="comment_header">
+							SYMPTOM{% if experience.symptoms.all|length > 1 %}S{% endif %}
+						</div>
+						<hr class="title_divider">
+					{% endif %}
+					{% for symptom in experience.symptoms.all %}
+						<p>
+							<span class="symptom_feed_name">
+							{{ symptom.symptom_name|capfirst }}</span
+							><span class="gray_label">Severity Before: </span>
+							{{ symptom.pre_intervention}}
+							<span class="gray_label">After: </span>
+							{{ symptom.post_intervention }}
+						</p>
+					{% endfor %}
+				</div>
+				
+				<div class="col-sm-4 col-xs-12">
+					{% if experience.brand or experience.doses.all %}
+						<div class="comment_header">
+							INTERVENTION
+						</div>
+						<hr class="title_divider">
+						{% if experience.brand %}
+							<p><span class="gray_label">Brand: </span>{{ experience.brand }}</p>
+						{% endif %}
+
+						{% for dose in experience.doses.all %}
+							{% if dose.dose_value and dose.dose_unit %}
+								<p><span class="gray_label">Quantity - </span>{{ dose.dose_value }} {% if dose.dose_value > 1 %}{{ dose.dose_unit }}s{% else %}{{ dose.dose_unit }}{% endif %}</p>
+							{% endif %}
+
+							{% if dose.dose_frequency and dose.dose_frequency_unit %}
+								<p><span class="gray_label">Frequency - </span>{{ dose.dose_frequency }} times per {{ dose.dose_frequency_unit }}</p>
+							{% endif %}
+						
+							{% if dose.dose_duration and dose.dose_duration_unit %}
+								<p><span class="gray_label">Duration - </span>{{ dose.dose_duration }}
+								{% if dose.dose_duration > 1 %} {{ dose.dose_duration_unit }}s{% else %} {{ dose.dose_duration_unit }}{% endif%}</p>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				</div>
+				
+				
+				
+				
+				<div class="col-sm-4 col-xs-12 text-center">
+					<div class="">
+						<canvas width="160" height="160" class="percent_effectiveness" id="percent_effectiveness">
+							<span id="percent">
+								{{ experience.effectiveness }}
+							</span>
+						</canvas><noscript><span>% effective</span></noscript>
+					</div>
+				</div>
+			</div> <!-- col -->
+
+
+
+
+
+
+
+
+			<div class="exp_details col-sm-7 col-xs-12">
+				<p>{{ experience.details|linebreaks }}</p>
+				<div class="exp_updates">
+					{% if experience_updates %}
+						<div style="padding-top: 2%;" class="comment_header">UPDATES</div>
+						<div class="">
+							{% for update in experience_updates %}
+								<h5 style="color: #ccc;">{{ update.pub_date|localtime }}</span></h5>
+								<p>{{ update.update }}</p>
+							{% endfor %}
+						</div>
+					{% endif %}
+				</div>
+
+		</div> <!-- exp_detail_body -->
+	</div>
+	<div class="row">
+		<div class="exp_comment col-xs-12">
+			{% get_comment_count for experience as comment_count %}
+			<div class="comment_header">COMMENTS ({{ comment_count }})</div>
+			<hr class="title_divider">
+			{% if request.user.is_authenticated %}
+				<div class="form-group">
+					{% get_comment_form for experience as exp_comment_form %}
+					<form action="{% comment_form_target %}" role="form" class="comment_form form-horizontal"  method="POST">
+							{% csrf_token %}
+							{{ exp_comment_form.comment|addcss:'form-control' }}
+							{{ exp_comment_form.honeypot|addcss:'hidden' }}
+							{{ exp_comment_form.content_type }}
+							{{ exp_comment_form.object_pk }}
+							{{ exp_comment_form.timestamp }}
+							{{ exp_comment_form.security_hash }}
+						<input type="hidden" name="next" value="{{ experience.get_absolute_url }}" />
+						<input class="submit_comment btn btn-primary center-block" type="submit" value="Submit" name="experience_comment" />
+					</form>
+				</div>
+			{% else %}
+				<p style="margin: 5% 0%;" class="text-center">Please <a href="{% url 'account_login' %}?next={% firstof request.path '/' %}" name="sign_in">log in</a> or <a href="{% url 'account_signup' %}" name="sign_in">sign up</a> to post a comment!</p>
+			{% endif %}
+
+			{% get_comment_list for experience as comment_list %}
+			{% for comment in comment_list %}
+				<div class="hyphenate comment_item">
+					{{ comment.comment }}  -  <a href="{% url 'userprofile:profile' user_name=comment.user.username %}" class="
+						{% if comment.user == experience.user %}
+							post-self
+						{% else %}
+							comment-user-name
+						{% endif %}">{{ comment.user_name }}</a> {{ comment.submit_date|date:"N j 'y" }} at {{ comment.submit_date|date:"H:i" }}
+						
+						{% if comment.user == request.user %}
+							<a class="gray_label" href="{% url 'experiences:delete_own_comment' message_id=comment.id %}"> - Delete</a>
+						{% endif %}
+				</div>
+				<hr class="comment-divider">
+			{% endfor %}
+		</div>
+	</div> <!-- row -->
+{% endblock content %}
+
+{% block scripts %}
+	<script src="{% static 'HexCollect/js/custom/experience_feed.js' %}"></script>
+{% endblock scripts %}

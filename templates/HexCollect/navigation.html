@@ -1,0 +1,106 @@
+{% load extras %}
+{% block navigation %}
+
+	<nav class="main-nav navbar navbar-default navbar-static-top">      
+		<div class="container">
+			<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+	data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="brand">
+						<a class="logo_link" href="{% url 'hexcollect:hexcollect' %}">
+							<div class="logo">
+								<div class="item-1">
+									<span class="letra1">H</span>
+								</div>
+								<div class="item-2">
+									<span class="letra2">e</span>
+								</div>
+								<div class="item-3">
+									<span class="letra3">x</span>
+								</div>
+								<div class="item-4">
+									<span class="letra4">C</span>
+								</div>
+								<div class="item-5">
+									<span class="letra5">o</span>
+								</div>
+								<div class="item-6">
+									<span class="letra6">l</span>
+								</div>
+								<div class="item-7">
+									<span class="letra7">l</span>
+								</div> 
+								<div class="item-8">
+									<span class="letra8">e</span>
+								</div> 
+								<div class="item-9">
+									<span class="letra9">c</span>
+								</div> 
+								<div class="item-10">
+									<span class="letra10">t</span>
+								</div> 
+							</div>
+						</a>
+					</div>
+				</div>
+		
+				<div role="navigation" id="navbar" class="navbar-collapse collapse">
+					<ul style="margin-left: 21px;" class="nav navbar-nav">
+						<li class="{{ request|activelink:'spotlight' }}">
+							<a href="{% url 'spotlight:spotlight' %}">Spotlight</a>
+						</li>
+						<li class="{{ request|activelink:'exps' }}">
+							<a href="{% url 'experiences:experiences' %}">Experiences</a>
+						</li>
+						<li class="{{ request|activelink:'about' }}">
+							<a href="{% url 'hexcollect:about' %}">About</a>
+						</li>
+					</ul>
+
+		  <ul class="nav navbar-nav navbar-right">
+			{% if request.user.is_authenticated %}
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{% if request.user.first_name or request.user.last_name %}
+							{{ request.user.first_name }} {{ request.user.last_name }}
+						{% else %}
+							{{ request.user.username }}
+						{% endif %}
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="{% url 'userprofile:profile' user_name=request.user.username %}">Profile</a></li>
+						<li><a href="{% url 'userprofile:update_profile' %}">Update profile</a></li>
+						<li><a href="{% url 'userprofile:journal' username=request.user.username %}">Journal</a></li>
+						
+						<li role="separator" class="divider"></li>
+						<li><a href="/a/logout/">Logout</a></li>
+					</ul>
+				</li>
+				
+				<!-- {% if request.user.profile.account_verified %}
+					(v)
+				{% else %}
+					(unv)
+				{% endif %} -->
+			{% else %}
+				<li>
+					<a href="/a/login/" name="sign_in">Sign in</a>
+				</li>
+				<li>	
+					<a href="/a/signup/" name="sign_up">Sign up</a>
+				</li>
+			{% endif %}
+		  </ul>
+		</div>
+	  </div>
+	  </div>
+	</nav>
+
+{% endblock navigation %}

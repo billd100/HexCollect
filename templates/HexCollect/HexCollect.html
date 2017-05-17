@@ -1,0 +1,65 @@
+{% extends 'HexCollect/__base.html' %}
+
+{% load extras %}
+
+{% block title %}Home{% endblock title %}
+	
+{% block banner %}
+	{% if not request.user.is_authenticated %}
+		<div class="jumbotron">
+			<div class="container text-center">
+				<h1 class="welcome-header">Move your health forward</h1>
+				<h4 style="font-size: 1.5em;">HexCollect is a community of people sharing their health experiences and insights.</h4>
+				<p style="margin-top: 5%;"><a style="margin-right: 10%;" href="{% url 'blog:blog_post' slug='welcome-to-hexcollect' %}">Learn more</a><a href="/a/signup/" role="button">Get started</a></p>
+			</div>
+		</div>
+	<!-- else if experiences.has_check_in -->
+	{% elif check_in_form %} <!-- elif no recent check-ins -->
+		<div class="jumbotron">
+			<div class="container">
+				<div class="text-center col-xs-12 col-md-10 col-md-offset-1">
+					<h1 class="welcome-header">How're you today?</h1>
+					<h5>Daily Check-In for <strong>{{ date|date:"D. N d, Y" }}</strong></h5>
+					<form action="{% url 'userprofile:journal' username=request.user.username %}" method="POST" role="form">
+						{% include 'UserProfile/daily_check_in.html' %}
+					</form>
+				</div> <!-- col -->
+				<!-- <div class="col-xs-4 pull-right">
+					<h5 class="text-center">Friends who've checked in recently</h5>
+				</div> -->
+			</div> <!-- container -->
+		</div> <!-- jumobtron -->
+	{% else %}
+	
+	{% endif %}
+{% endblock banner %}
+
+{% block content %}
+	<div class="row">		
+		<div class="col-xs-12 col-md-8">
+			<h2 class="sub_header">Recent Experiences</h2>
+			{% include 'HexCollect/experience_feed.html' %}
+
+			<button type="button" class="view_more btn btn-default center-block">
+			<a href="{% url 'experiences:activity' %}">View More Experiences</a>
+		</button>
+		</div>
+		
+		<div class="col-xs-12 col-md-4 pull-right">
+			<div>
+				<!-- <h2>Recent Comments</h2> -->
+				<div>
+					
+				</div>
+			</div>
+			
+			<h2 class="sub_header">Newest Explorers</h2>
+			<div style="margin-left: 20px;">
+				{% for explorer in explorers %}
+					<p><a href="{% url 'userprofile:profile' user_name=explorer.username %}">{{ explorer.username }}</a></p>
+				{% endfor %}
+			</div>
+		</div>
+		
+	</div> <!-- /row -->
+{% endblock %}

@@ -1,0 +1,28 @@
+<!-- enclosed by <div class="col-xs-12 col-md-10"> -->
+
+<div class="text-center">
+		{% csrf_token %}
+		<input id="1" class="radio-inline__input" name="status" type="radio" value="excellent" /> 
+		<label for="1" class="radio-inline__label">Excellent</label>
+	
+		<input id="2" class="radio-inline__input" name="status" type="radio" value="good" />
+		<label for="2" class="radio-inline__label"">Good</label>
+	
+		<input id="3" class="radio-inline__input" name="status" type="radio" value="neutral" />
+		<label for="3" class="radio-inline__label">Neutral</label>
+	
+		<input id="4" class="radio-inline__input" name="status" type="radio" value="poor" />
+		<label for="4" class="radio-inline__label">Poor</label>
+	
+		<input id="5" class="radio-inline__input" name="status" type="radio" value="abysmal" />
+		<label for="5" class="radio-inline__label">Abysmal</label>
+
+		{{ check_in_form.status.errors }}
+
+		<div class="check-in-text">
+			{{ check_in_form.status_detail.errors }}
+			{{ check_in_form.status_detail }}
+		</div>
+
+		<input class="button center-block btn btn-warning" id="daily_check_in_save" type="submit" value="Check-In"/>
+</div>

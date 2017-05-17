@@ -1,0 +1,54 @@
+{% extends "HexCollect/__base.html" %}
+{% load static extras %}
+
+{% block title %}{{ request.user.username }}{% endblock title %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2 col-xs-12">
+			<form role="form" class="form-horiontal" action="{% url 'userprofile:update_profile' %}" method="POST">
+				{% csrf_token %}
+				{{ form.non_field_errors }}
+				<div class="floating padding form-group">
+					<p>
+						{{ form.birthday.errors }}
+						{{ form.birthday.label_tag }}
+						{{ form.birthday|addcss:'form-control' }}
+					</p>
+					<p>
+						{{ form.sex.errors }}
+						{{ form.sex.label_tag }}
+						{{ form.sex|addcss:'form-control' }}
+					</p>
+					<p>
+						{{ form.gender_identity.errors }}
+						{{ form.gender_identity.label_tag }}
+						{{ form.gender_identity|addcss:'form-control' }}
+					</p>
+					<p>
+						{{ form.ethnicity.errors }}
+						{{ form.ethnicity.label_tag }}
+						{{ form.ethnicity|addcss:'form-control' }}
+					</p>
+					<p>
+						{{ form.race.errors }}
+						{{ form.race.label_tag }}
+						{{ form.race|addcss:'form-control' }}
+					</p>
+				</div>
+				<div class="floating padding form-group">
+					{{ form.about.label_tag }}
+					{{ form.about|addcss:'form-control' }}
+					{{ form.errors }}
+				</div>
+				<a role="button" title="Ethnicity and race is not visible to the community, but these factors are likely to play a role in people’s health." data-fn-click="open_popup" href="#"><span class=" icon-info align-text-bottom icon"></span></a>
+			
+				<input class="button center-block btn btn-warning" value="Save" type="submit" name="update_profile"/>
+			</form>
+		</div>
+	</div>
+{% endblock content %}
+
+{% block script %}
+
+{% endblock script %}

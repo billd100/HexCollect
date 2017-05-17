@@ -1,0 +1,49 @@
+{% load comments %}
+{% if experiences %}
+	{% for experience in experiences %}
+		<div style="margin-top: 5%; padding: 4% 2% 2%;" class="floating">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="feed_title">
+						<h3 class="exp_feed_header"><a href="{{ experience.get_absolute_url }}">{{ experience.intervention }}</a></h3>
+						<h4 class="experience-by pull-right">by <a href="{% url 'userprofile:profile' user_name=experience.user.username %}">{{ experience.user.username }}</a></h4>
+					</div>
+				</div>
+			</div> <!-- row -->
+
+			<hr style="width: 95%;">
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="exp_feed_dose_symptoms">
+						{% if experience.symptoms.all %}
+							<span class="gray_label">Symptoms: </span>
+							{{ experience.symptoms.all|join:", "|capfirst }}
+						{% endif %}
+						<div class="pull-right"><span class="gray_label">Purpose: </span>{{ experience.purpose }}</div>
+					</div>
+				</div>
+			</div> <!-- row -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="exp_feed_body">
+						<p>{{ experience.details|truncatechars:300 }}</p>
+					</div>
+				</div>
+			</div> <!-- row -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="exp_feed_comment_count">
+						{% get_comment_count for experience as comment_count %}
+						<a href="{{ experience.get_absolute_url }}"><div class="comment_count">{{ comment_count }}   <span class="glyphicon glyphicon-comment"></span></div></a>
+					</div>
+				</div>
+			</div>
+		</div> <!-- floating -->
+	{% endfor %}
+{% else %}
+	<p>Oops, there doesn't seem to be anything here.</p>
+	<a class="share-experience btn btn-md btn-warning" href="{% url 'experiences:share_experience' %}" role="button">Share an Experience</a>
+{% endif %}
